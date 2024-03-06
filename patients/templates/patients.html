@@ -5,7 +5,7 @@
 <!-- <div class="col-md-6 offset-md-3"> -->
 {% if user.is_authenticated %}
 <h1> Welcome World </h1>
-<h1> Records....... </h1>
+<h1> Patients Records....... </h1>
 
 <table class="table table-striped table-hover table-bordered">
   <thead class="table-dark">
@@ -14,17 +14,20 @@
       <th scope="col">Created_at</th>
       <th scope="col">First_&_last_name</th>
       <!-- <th scope="col">last_name</th> -->
-      <!-- <th scope="col">email</th> -->
+      <th scope="col">email</th>
       <th scope="col">Phone</th>
       <th scope="col">Address</th>
-      <th scope="col">Doctor_id</th>
-      <th scope="col">Staff_id</th>
-      <th scope="col">Specialization</th>
+      <th scope="col">Patient_id</th>
+      <!-- <th scope="col">Staff_id</th> -->
+      <!-- <th scope="col">Specialization</th> -->
 
       <th scope="col">Birth_Date</th>
       <th scope="col">Gender</th>
-      <th scope="col">Sector</th>
-      <th scope="col">Job_title</th>
+      <th scope="col">Insurance</th>
+      <th scope="col">Description</th>
+      <th scope="col">Facility</th>
+      <th scope="col">Amount</th>
+
     </tr>
   </thead>
   <tbody>
@@ -35,17 +38,19 @@
         <td>{{ record.created_at }}</td>
         <td>{{ record.first_name }}
             {{ record.last_name }}</td>
-        <!-- <td>{{ record.email }}</td> -->
+        <td>{{ record.email }}</td>
         <td>{{ record.phone }}</td>
         <td>{{ record.full_address }}</td>
-        <td>{{ record.doctor_id }}</td>
-        <td>{{ record.staff_id }}</td>
-        <td>{{ record.specialization }}</td>
+        <td>{{ record.patient_id }}</td>
+        <!-- <td>{{ record.staff_id }}</td> -->
+        <!-- <td>{{ record.specialization }}</td> -->
 
         <td>{{ record.birth_date }}</td>
         <td>{{ record.gender }}</td>
-        <td>{{ record.sector }}</td>
-        <td>{{ record.job_title }}</td>
+        <td>{{ record.insurance }}</td>
+        <td>{{ record.description }}</td>
+        <td>{{ record.facility }}</td>
+        <td>{{ record.amount }}</td>
         <!-- <td>{{ record.Description }}</td> -->
       </tr>
   {% endfor %}

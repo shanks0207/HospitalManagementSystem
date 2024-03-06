@@ -47,11 +47,11 @@ def register_user(request):
     return render(request, 'register.html', {'form':form})
 
 
-def customer_record(request, pk):
+def Staff_record(request, pk):
     if request.user.is_authenticated:
         #Look up Records
-        customer_record = Staff.objects.get(id=pk)
-        return render(request, 'record.html', {'customer_record':customer_record})
+        staff_record = Staff.objects.get(id=pk)
+        return render(request, 'record.html', {'staff_record':staff_record})
     else:
         messages.success(request, "You Must Be Logged In To View Requested Data")
         return redirect('home')
@@ -94,3 +94,24 @@ def update_record(request, pk):
         messages.success(request, "You Must Be Logged In..")
         return redirect('home')
         
+def record_list(request):
+    records = Staff.objects.all()
+
+    # Filtering
+    gender_filter = request.GET.get('gender')
+    if gender_filter:
+        records = records.filter(gender=gender_filter)
+
+    sector_filter = request.GET.get('sector')
+    if sector_filter:
+        records = records.filter(sector=sector_filter)
+
+    # Sorting
+    sort_by = request.GET.get('sort')
+    if sort_by:
+        records = records.order_by(sort_by)
+
+    context = {
+        'records': records
+    }
+    return render(request, 'record_list.html', context)

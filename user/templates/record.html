@@ -6,20 +6,26 @@
 <div class="card">
   <div class="card-header">
     <strong>
-    {{ customer_record.first_name }}
-    {{ customer_record.last_name }}
+    {{ staff_record.first_name }}
+    {{ staff_record.last_name }}
   </strong>
   </div>
   <div class="card-body">
     <h5 class="card-title">
-      <strong>ID:</strong>{{ customer_record.id }}<br/>
-      <strong>Created At:</strong>{{ customer_record.created_at }}<br/>
-      <strong>Email:</strong>{{ customer_record.email }}<br/>
-      <strong>Phone No.:</strong>{{ customer_record.phone }}<br/>
-      <strong>Address:</strong>{{ customer_record.Address }}<br/>
-      <strong>City:</strong>{{ customer_record.city }}<br/>
-      <strong>State:</strong>{{ customer_record.state }}<br/>
-      <strong>Zipcode:</strong>{{ customer_record.zipcode }}<br/>
+      <strong>ID:</strong>{{ staff_record.id }}<br/>
+      <strong>Created At:</strong>{{ staff_record.created_at }}<br/>
+      <strong>Email:</strong>{{ staff_record.email }}<br/>
+      <strong>Phone No.:</strong>{{ staff_record.phone }}<br/>
+      <strong>Address:</strong>{{ staff_record.full_address }}<br/>
+      <strong>Doctor_id:</strong>{{ staff_record.doctor_id }}<br/>
+      <strong>Staff_id:</strong>{{ staff_record.staff_id }}<br/>
+      <strong>Specialization:</strong>{{ staff_record.specialization }}<br/>
+
+      <strong>Birth_Date:</strong>{{ staff_record.birth_date }}<br/>
+      <strong>Gender:</strong>{{ staff_record.gender }}<br/>
+      <strong>sector:</strong>{{ staff_record.sector }}<br/>
+      <strong>Job_title:</strong>{{ staff_record.job_title }}<br/>
+
     </h5>
 
   </div>
@@ -28,8 +34,8 @@
 <br/>
 <br/>
 <a href="{% url 'home' %}" class="btn btn-secondary">Go Back</a>
-<a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Delete</a>
-<a href="{% url 'update_record' customer_record.id %}" class="btn btn-light">Update</a>
+<a href="{% url 'delete_record' staff_record.id %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'update_record' staff_record.id %}" class="btn btn-light">Update</a>
 
   
 {% endblock %}

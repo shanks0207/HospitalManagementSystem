@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Patient Records:</h1>
+
+<div class="card">
+  <div class="card-header">
+    <strong>
+    {{ patient_record.first_name }}
+    {{ patient_record.last_name }}
+  </strong>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">
+      <strong>ID:</strong>{{ patient_record.id }}<br/>
+      <strong>Created At:</strong>{{ patient_record.created_at }}<br/>
+      <strong>Email:</strong>{{ patient_record.email }}<br/>
+      <strong>Phone No.:</strong>{{ patient_record.phone }}<br/>
+      <strong>Address:</strong>{{ patient_record.full_address }}<br/>
+      <strong>Doctor_id:</strong>{{ patient_record.doctor_id }}<br/>
+      <strong>Staff_id:</strong>{{ patient_record.staff_id }}<br/>
+      <strong>Specialization:</strong>{{ patient_record.specialization }}<br/>
+
+      <strong>Birth_Date:</strong>{{ patient_record.birth_date }}<br/>
+      <strong>Gender:</strong>{{ patient_record.gender }}<br/>
+      <strong>Insurance:</strong>{{ patient_record.insurance }}<br/>
+      <strong>Remarks:</strong>{{ patient_record.description }}<br/>
+      <strong>Facility:</strong>{{ patient_record.facility }}<br/>
+      <strong>Amount:</strong>{{ patient_record.amount }}<br/>
+
+    </h5>
+
+  </div>
+</div>
+
+<br/>
+<br/>
+<a href="{% url 'home' %}" class="btn btn-secondary">Go Back</a>
+<a href="{% url 'delete_record' staff_record.id %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'update_record' staff_record.id %}" class="btn btn-light">Update</a>
+
+  
+{% endblock %}
