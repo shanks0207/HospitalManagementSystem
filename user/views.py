@@ -8,7 +8,7 @@ from .models import Staff
 
 def home(request):
     records = Staff.objects.all()
-    #check to see if logging in
+    # check to see if logging in
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -115,3 +115,10 @@ def record_list(request):
         'records': records
     }
     return render(request, 'record_list.html', context)
+
+def dashboard(request):
+    if request.user.is_authenticated:
+        return render(request, 'dashboard.html')
+    else:
+        messages.success(request, "You Must Be Logged In..")
+        return redirect('home')

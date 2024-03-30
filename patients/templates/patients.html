@@ -14,7 +14,7 @@
       <th scope="col">Created_at</th>
       <th scope="col">First_&_last_name</th>
       <!-- <th scope="col">last_name</th> -->
-      <th scope="col">email</th>
+      <!-- <th scope="col">email</th> -->
       <th scope="col">Phone</th>
       <th scope="col">Address</th>
       <th scope="col">Patient_id</th>
@@ -24,7 +24,7 @@
       <th scope="col">Birth_Date</th>
       <th scope="col">Gender</th>
       <th scope="col">Insurance</th>
-      <th scope="col">Description</th>
+      <!-- <th scope="col">Description</th> -->
       <th scope="col">Facility</th>
       <th scope="col">Amount</th>
 
@@ -34,11 +34,11 @@
 {% if records %}
   {% for record in records %}
       <tr>
-        <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
+        <td><a href="{% url 'patient_record' record.id %}">{{ record.id }}</a></td>
         <td>{{ record.created_at }}</td>
         <td>{{ record.first_name }}
             {{ record.last_name }}</td>
-        <td>{{ record.email }}</td>
+        <!-- <td>{{ record.email }}</td> -->
         <td>{{ record.phone }}</td>
         <td>{{ record.full_address }}</td>
         <td>{{ record.patient_id }}</td>
@@ -48,7 +48,7 @@
         <td>{{ record.birth_date }}</td>
         <td>{{ record.gender }}</td>
         <td>{{ record.insurance }}</td>
-        <td>{{ record.description }}</td>
+        <!-- <td>{{ record.description }}</td> -->
         <td>{{ record.facility }}</td>
         <td>{{ record.amount }}</td>
         <!-- <td>{{ record.Description }}</td> -->

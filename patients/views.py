@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import AddPatientForm
+
 from .models import Patient
 from user.models import Staff
 # from user.views import *
@@ -9,7 +10,9 @@ from user.models import Staff
 # Create your views here.
 
 def patient(request):
-    records = Staff.objects.all()
+    records = Patient.objects.all()
+
+    return render(request, 'patients.html', {'records': records})
     #check to see if logging in
     if request.method == 'POST':
         username = request.POST['username']
@@ -19,10 +22,10 @@ def patient(request):
         if user is not None:
             login(request, user)
             messages.success(request, "You Have Been Logged In !")
-            return redirect('patients')
+            return redirect('patient')
         else:
             messages.success(request, "There was An Error Logging In, Please try Again.....")
-            return redirect('home')
+            return redirect('patient')
     else:
         return render(request, 'patients.html', {'patient_record': patient_record})
 
@@ -52,11 +55,11 @@ def patient(request):
 def patient_record(request, pk):
     if request.user.is_authenticated:
         #Look up Records
-        staff_record = Patient.objects.get(id=pk)
+        patient_record = Patient.objects.get(id=pk)
         return render(request, 'patient_record.html', {'patient_record':patient_record})
     else:
         messages.success(request, "You Must Be Logged In To View Requested Data")
-        return redirect('home')
+        return redirect('patient')
 
 
 def delete_patient(request, pk):
@@ -67,7 +70,7 @@ def delete_patient(request, pk):
         return redirect('patient')
     else:
         messages.success(request, "you Must Be Logged In To Delete This Data." )
-        return redirect('home')
+        return redirect('patient')
 
 
 def add_patient(request):
@@ -75,13 +78,13 @@ def add_patient(request):
     if request.user.is_authenticated:
         if request.method == "POST":
             if form.is_valid():
-                add_record = form.save()
+                add_patient = form.save()
                 messages.success(request, "Record Added ")
                 return redirect('patient')
         return render(request, 'add_patient.html', {'form':form})
     else:
         messages.success(request, "You Must Be LoggedIn .....")
-        return redirect('home')
+        return redirect('patient')
     
 def update_patient(request, pk):
     if request.user.is_authenticated:
@@ -91,10 +94,10 @@ def update_patient(request, pk):
             form.save()
             messages.success(request, "Record Has Been Updated. !")
             return redirect('patient')
-        return render(request, 'update_record.html', {'form':form})
+        return render(request, 'update_patient.html', {'form':form})
     else:
         messages.success(request, "You Must Be Logged In..")
-        return redirect('home')
+        return redirect('patient')
         
 def patient_list(request):
     records = Patient.objects.all()
